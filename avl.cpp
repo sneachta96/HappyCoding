@@ -7,7 +7,7 @@
 
 
 using namespace std;
-struct node {
+struct node {               //NODE DEFINATION
   long long int key;
   struct node *left;
   struct node *right;
@@ -19,7 +19,7 @@ struct node {
 
  
 
-long long int height(struct node *n){
+long long int height(struct node *n){  //THIS RETURNS THE HEIGHT OF ANY NODE
   if(n == NULL){
     return 0;
   }
@@ -28,7 +28,7 @@ long long int height(struct node *n){
   }
 }
 
-struct node *rightRotate(struct node *y){
+struct node *rightRotate(struct node *y){   // THIS ROTATES THE NODE Y RIGHT AND REPLACES IT BY ITS LEFT CHILD ,X
   struct node *x = y->left;
   struct node *z = x->right;
   x->right = y;
@@ -39,7 +39,7 @@ struct node *rightRotate(struct node *y){
   x->right_child = (y->right_child+y->left_child)+1;
   return x;
 }
-struct node *leftRotate(struct node *y){
+struct node *leftRotate(struct node *y){      // THIS ROTATES THE NODE Y LEFT AND REPLACES IT BY ITS RIGHT CHILD, X
   struct node *x = y->right;
   struct node *z = x->left;
   x->left = y;
@@ -54,7 +54,7 @@ struct node *leftRotate(struct node *y){
 
 }
 
-long long int getBalance(struct node *n){
+long long int getBalance(struct node *n){   //THIS IS TO OBTAIN THE BALANCE BETWEEN THE NODES
   if(n == NULL){
     return 0;
   }
@@ -75,7 +75,7 @@ struct node *insert(struct node *n, long long int key){
     //cout<<"dfs"<<endl;
     return temp;
   }
-  if(key == n->key){
+  if(key == n->key){    //IF THE KEY IS ALREADY THERE, THEN SIMPLE INCREMENT THE COUNT OF THE VALUE
     n->count+=1;
     return n;
   }
@@ -89,10 +89,10 @@ struct node *insert(struct node *n, long long int key){
     return n;
   }
   n->height = max(height(n->left),height(n->right))+1;
-  if(n->right != NULL ){
+  if(n->right != NULL ){  //UPDATE THE VALUE OF NODES IN THE RIGHT SUBTREE
   n->right_child = (n->right->right_child)+ (n->right->left_child)+1;
 }
-  if(n->left != NULL){
+  if(n->left != NULL){    //UPDATE THE VALUE OF THE NODES IN THE LEFT SUBTREE
   n->left_child = (n->left->right_child)+ (n->left->left_child)+1;
   //if(n->key == 20)cout<<n->left_child<<endl;
 }
@@ -214,21 +214,6 @@ long long int findkthsmallest(struct node *root,long long int k){
   }
   else{
     return findkthsmallest(root->right,k-(root->left_child+1));
-  }
-}
-
-long long int count(struct node *root,long long int key){
-  if(root == NULL){
-    return -1;
-  }
-  if(root->key == key){
-    return root->left_child;
-  }
-  else if(root->key >key){
-    return count(root->left,key);
-  }
-  else{
-    return count(root->right,key);
   }
 }
 bool ifPresent(struct node * root, long long int key){
