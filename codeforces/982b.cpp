@@ -1,5 +1,5 @@
 //this is a very nice stack implementation problem
-
+//problem name : Bus of Characters
 #include<iostream>
 #include<vector>
 #include<algorithm>
