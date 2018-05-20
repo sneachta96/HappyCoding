@@ -1,4 +1,5 @@
-//Infinite loop when mid becomes equal to low and that is a valid situation. Correction : Changing (high+low)/2 to (high+low+1)/2
+//Infinite loop when mid becomes equal to low and that is a valid situation.note that the range is from 1 and hence this correction.
+//Correction : Changing (high+low)/2 to (high+low+1)/2. This wont be needed when range is from 0 .
 //Handling the case when binary search doesnot give a valid solution. It would stop at low = 1. So, when we come out of the loop
 //its important to check that valid(low) is still true.
 
